@@ -1,3 +1,16 @@
+/*Font Roboto*/
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*Root*/
+:root {
+    --primary-color: #1B2A3F;
+    --secondary-color: #A60F2B;
+    --background-color: #FFFFFF;
+    --accent-color: #B31023;
+    --accent2-color: #243954;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -24,3 +37,4 @@ body {
         flex-direction: column;
     }
 }
+
