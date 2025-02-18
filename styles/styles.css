@@ -39,3 +39,61 @@ section#recipes {
     color: var(--primary-color);
 }
 
+
+/*2 column logic*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+.left-column img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    /*margin-bottom: 20px;**/
+    font-size: 5rem;
+    color: var(--secondary-color);
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/*UI-UX*/
+.button {
+    background-color: var(--primary-color); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3em;
+  }
+  .button:hover{
+    font-size: 4em;
+    color: var(--accent-color);
+  }
