@@ -2,6 +2,7 @@
     "breakfast": [
       {
         "name": "Oatmeal",
+        "image": "/images/oatmeal.png",
         "ingredients": [
           { "name": "rolled oats", "amount": "1.2 cup" },
           { "name": "water", "amount": "1 cup" },
@@ -19,6 +20,7 @@
       },
       {
         "name": "Orange Raspberry Smoothie",
+        "image": "/images/Raspberry-Orange-Smoothie.webp",
         "ingredients": [
           { "name": "frozen raspberries", "amount": "1/2 cup" },
           { "name": "orange juice", "amount": "1/2 cup" },
@@ -33,6 +35,7 @@
     "lunch": [
       {
         "name": "Chicken Caesar Wrap",
+        "image": "/images/Chicken-Caesar-Wrap.webp",
         "ingredients": [
           { "name": "rotisserie chicken (shredded)", "amount": "to taste" },
           { "name": "lettuce", "amount": "to taste" },
@@ -51,6 +54,7 @@
     "dinner": [
       {
         "name": "Chicken Pasta Salad",
+        "image": "/images/Chicken-pasta-salad.png",
         "ingredients": [
           { "name": "penne pasta", "amount": "1 lb." },
           { "name": "plain yogurt (not Greek)", "amount": "1 cup" },
