@@ -11,6 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function populateMealTypeDropdown(recipes) {
     const dropdown = document.getElementById("meal-type-dropdown");
+    
+    // Ensure "All Meals" is always an option
+    dropdown.innerHTML = '<option value="all">All Meals</option>';
+
+    // Dynamically add meal types
+    Object.keys(recipes).forEach(mealType => {
+        const option = document.createElement("option");
+        option.value = mealType;
+        option.textContent = mealType.charAt(0).toUpperCase() + mealType.slice(1);
+        dropdown.appendChild(option);
+    });
+
     dropdown.addEventListener("change", () => {
         filterRecipesByMealType(dropdown.value, recipes);
     });
@@ -19,18 +31,21 @@ function populateMealTypeDropdown(recipes) {
 function filterRecipesByMealType(mealType, recipes) {
     const container = document.getElementById("recipes-container");
     container.innerHTML = "";
+    
     if (mealType === "all") {
         displayRecipes(recipes);
         return;
     }
-    
+
     if (recipes[mealType]) {
         const section = document.createElement("section");
-        section.innerHTML = `<h2>${mealType}</h2>`;
+        section.innerHTML = `<h2>${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>`;
+        
         recipes[mealType].forEach(recipe => {
             const recipeDiv = createRecipeCard(recipe);
             section.appendChild(recipeDiv);
         });
+        
         container.appendChild(section);
     }
 }
@@ -38,13 +53,16 @@ function filterRecipesByMealType(mealType, recipes) {
 function displayRecipes(recipes) {
     const container = document.getElementById("recipes-container");
     container.innerHTML = "";
+    
     Object.keys(recipes).forEach(mealType => {
         const section = document.createElement("section");
-        section.innerHTML = `<h2>${mealType}</h2>`;
+        section.innerHTML = `<h2>${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>`;
+        
         recipes[mealType].forEach(recipe => {
             const recipeDiv = createRecipeCard(recipe);
             section.appendChild(recipeDiv);
         });
+
         container.appendChild(section);
     });
 }
