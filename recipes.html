@@ -3,65 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickRecipes</title>
+    <title>QuickRecipes | Recipes</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>Quick Recipes</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="recipes.html">Recipes</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" data-category="breakfast">Breakfast</a></li>
-                        <li><a href="#" data-category="lunch">Lunch</a></li>
-                        <li><a href="#" data-category="dinner">Dinner</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>        
-    </header>
+    <!-- Navigation will be dynamically injected here -->
+    <header></header>
 
     <main>
-        <div class="container">
-            <section id="recipes" class="left-column">
-                <img src="images/AdobeStock_528296944.jpeg" alt="Hero Img">
-            </section>
-            
-            <section class="right-column">
-                <h2>Welcome to Easy College Cooking!</h2>
-                <p>
-                    Our mission is to help college students navigate the culinary world with ease and confidence. 
-                    We provide simple, affordable, and delicious recipes that are perfect for busy schedules.
-                </p>
-                
-                <p>
-                    Say goodbye to instant noodles and frozen dinners—discover the joy of cooking with step-by-step guides, tips, and tricks!
-                </p>
-
-                <!-- Recipe Dropdown Menu -->
-                <label for="recipe-dropdown">Choose a recipe:</label>
-                <select id="recipe-dropdown"></select>
-
-                <!-- Recipe Display Container -->
-                <div id="recipes-container"></div>
-
-                <a class="button" href="recipes.html">Let's Get Cooking</a>
-            </section>
+        <h2>Choose Your Meal</h2>
+        <div class="recipe-options">
+            <a href="breakfast.html" class="recipe-box">
+                <figure>
+                    <img src="images/breakfast.jpg" alt="Breakfast">
+                    <figcaption>Breakfast</figcaption>
+                </figure>
+            </a>
+            <a href="lunch.html" class="recipe-box">
+                <figure>
+                    <img src="images/lunch.jpg" alt="Lunch">
+                    <figcaption>Lunch</figcaption>
+                </figure>
+            </a>
+            <a href="dinner.html" class="recipe-box">
+                <figure>
+                    <img src="images/dinner.jpg" alt="Dinner">
+                    <figcaption>Dinner</figcaption>
+                </figure>
+            </a>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 QuickRecipes. All rights reserved.</p>
+        <p>&copy; 2025 Quick Recipes. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript Files (ensure they load after content) -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/recipes.js"></script>
+    <!-- JavaScript Files -->
+    <script src="scripts/nav.js"></script>
 </body>
 </html>
