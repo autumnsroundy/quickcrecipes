@@ -1,0 +1,50 @@
+/* Recipe Options - Flexbox for three columns */
+.recipe-options {
+    display: flex;
+    justify-content: space-between; /* Distribute evenly */
+    gap: 20px; /* Space between items */
+    margin-top: 20px;
+}
+
+/* Ensure each recipe-box takes equal space and is centered */
+.recipe-box {
+    flex: 1; /* Distribute space equally */
+    max-width: 30%; /* Prevent stretching */
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure figure wraps content properly */
+.recipe-box figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image Styling */
+.recipe-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Caption Styling */
+.recipe-box figcaption {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Hover Effect */
+.recipe-box:hover {
+    transform: scale(1.05);
+}
+
+
+

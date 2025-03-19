@@ -1,0 +1,61 @@
+{
+  "breakfast": [
+      {
+          "name": "Oatmeal",
+          "image": "images/oatmeal.jpg",
+          "ingredients": [
+              { "name": "rolled oats", "amount": "1/2 cup" },
+              { "name": "water", "amount": "1 cup" },
+              { "name": "milk", "amount": "2-3 tablespoons" },
+              { "name": "brown sugar", "amount": "1 tsp" },
+              { "name": "maple syrup", "amount": "1 tsp" },
+              { "name": "cinnamon", "amount": "1/8 tsp" }
+          ],
+          "directions": [
+              "Place oats and water in a microwave-safe bowl.",
+              "Heat for 90 seconds. Add 15-second increments until oatmeal is puffed and softened.",
+              "Add milk, brown sugar, cinnamon, and syrup.",
+              "Stir before serving."
+          ]
+      }
+  ],
+  "lunch": [
+      {
+          "name": "Chicken Caesar Wrap",
+          "image": "images/Chicken-Caesar-Wrap.webp",
+          "ingredients": [
+              { "name": "rotisserie chicken", "amount": "to taste" },
+              { "name": "lettuce", "amount": "to taste" },
+              { "name": "parmesan cheese", "amount": "to taste" },
+              { "name": "Caesar dressing", "amount": "to taste" },
+              { "name": "flour tortilla wrap", "amount": "1" }
+          ],
+          "directions": [
+              "Place ingredients in a vertical row on the tortilla.",
+              "Fold left and right edges of the tortilla in.",
+              "Tuck and roll the tortilla with ingredients into a wrap.",
+              "Slice into pinwheels or refrigerate for later."
+          ]
+      }
+  ],
+  "dinner": [
+      {
+          "name": "Chicken Pasta Salad",
+          "image": "images/Chicken-pasta-salad.png",
+          "ingredients": [
+              { "name": "penne pasta", "amount": "1 lb." },
+              { "name": "plain yogurt", "amount": "1 cup" },
+              { "name": "mayonnaise", "amount": "3/4 cup" },
+              { "name": "dijon mustard", "amount": "2 Tbsp." },
+              { "name": "lemon juice", "amount": "2 Tbsp." },
+              { "name": "shredded chicken", "amount": "3 cups" }
+          ],
+          "directions": [
+              "Cook pasta, drain, and let cool.",
+              "Mix yogurt, mayo, mustard, and lemon juice.",
+              "Combine pasta, chicken, and dressing.",
+              "Refrigerate until ready to serve."
+          ]
+      }
+  ]
+}
