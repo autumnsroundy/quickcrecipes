@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickRecipes</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/app.js" defer></script>
+    <script src="scripts/recipes.js" defer></script>
+    <!--<script src="scripts/recipes.json" defer></script>-->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Quick Recipes</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#recipes">Recipes</a></li>
+                <li><a href="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Select a Meal Type:</h2>
+            <select id="meal-type-dropdown">
+                <option value="all">All Meals</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+            </select>
+        </div>
+
+        <!-- Ensure this is the only recipes container "image": "images/", -->
+        <div id="recipes-container"></div>
+    </main>
+    <footer>
+        <p>© 2025 QuickRecipes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
