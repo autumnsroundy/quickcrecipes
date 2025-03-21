@@ -6,7 +6,7 @@
     <title>QuickRecipes | Breakfast</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body data-meal-type="breakfast">
     <header></header> <!-- Navigation will be dynamically inserted -->
 
     <main>
@@ -22,10 +22,5 @@
 
     <script src="scripts/nav.js"></script> <!-- Load navigation dynamically -->
     <script src="scripts/recipes-loader.js"></script> <!-- Load recipes dynamically -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            loadRecipes("breakfast"); // Change this to "lunch" or "dinner" in respective files
-        });
-    </script>
 </body>
 </html>
