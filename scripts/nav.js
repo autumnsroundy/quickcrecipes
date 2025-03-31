@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function loadNav() {
     const navHTML = `
         <nav>
             <ul class="navbar">
@@ -20,7 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     if (header) {
         header.innerHTML = navHTML;
+        highlightActivePage();
     } else {
-        console.warn("No <header> element found. Ensure each HTML page has a <header> where the navigation should be inserted.");
+        console.warn("No <header> element found.");
     }
-});
+}
+
+function highlightActivePage() {
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === currentPage);
+    });
+}
