@@ -6,7 +6,7 @@
     <title>QuickRecipes | Lunch</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body data-meal-type="lunch">
     <header></header> <!-- Navigation will be dynamically inserted -->
 
     <main>
@@ -20,6 +20,15 @@
         <p>&copy; 2025 Quick Recipes. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="app.js"></script>
+    <!-- Import the necessary JS files -->
+    <script type="module">
+        import { displayRecipes } from './scripts/recipe-loader.js';
+
+        // When the DOM is loaded, display the lunch recipes
+        document.addEventListener('DOMContentLoaded', () => {
+            displayRecipes('lunch');  // Pass 'lunch' to display lunch recipes
+        });
+    </script>
 </body>
 </html>
+
