@@ -7,7 +7,9 @@ footer {
     color: white;
     font-size: 1rem;
 }
-
+footer p {
+    color: white;
+}
 /* Responsive Design */
 @media (max-width: 1024px) {
     .container {
