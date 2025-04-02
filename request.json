@@ -1,0 +1,15 @@
+[
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "recipe": "Spaghetti Carbonara",
+      "details": "A simple Carbonara recipe with eggs, cheese, pancetta, and black pepper."
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "recipe": "Vegan Tacos",
+      "details": "Tacos with lentils, avocado, salsa, and lettuce."
+    }
+  ]
+  
