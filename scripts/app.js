@@ -1,82 +1,125 @@
-document.addEventListener("DOMContentLoaded", () => {
-    fetch('recipes.json')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Recipes loaded:', data);
-            populateMealTypeDropdown(data);
-            displayRecipes(data);
-        })
-        .catch(error => console.error('Error loading recipes:', error));
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('App.js Loaded');
+
+    highlightActivePage();
+    enableSmoothScroll();
+    applyFadeInEffect(); // Now applies to all pages
 });
 
-function populateMealTypeDropdown(recipes) {
-    const dropdown = document.getElementById("meal-type-dropdown");
-    
-    // Ensure "All Meals" is always an option
-    dropdown.innerHTML = '<option value="all">All Meals</option>';
+// Highlight the active navigation link
+function highlightActivePage() {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const currentPage = window.location.pathname.split('/').pop();
 
-    // Dynamically add meal types
-    Object.keys(recipes).forEach(mealType => {
-        const option = document.createElement("option");
-        option.value = mealType;
-        option.textContent = mealType.charAt(0).toUpperCase() + mealType.slice(1);
-        dropdown.appendChild(option);
-    });
-
-    dropdown.addEventListener("change", () => {
-        filterRecipesByMealType(dropdown.value, recipes);
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
     });
 }
 
-function filterRecipesByMealType(mealType, recipes) {
-    const container = document.getElementById("recipes-container");
-    container.innerHTML = "";
-    
-    if (mealType === "all") {
-        displayRecipes(recipes);
-        return;
-    }
+// Enable smooth scrolling for navigation links
+function enableSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
 
-    if (recipes[mealType]) {
-        const section = document.createElement("section");
-        section.innerHTML = `<h2>${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>`;
-        
-        recipes[mealType].forEach(recipe => {
-            const recipeDiv = createRecipeCard(recipe);
-            section.appendChild(recipeDiv);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
         });
-        
-        container.appendChild(section);
-    }
-}
-
-function displayRecipes(recipes) {
-    const container = document.getElementById("recipes-container");
-    container.innerHTML = "";
-    
-    Object.keys(recipes).forEach(mealType => {
-        const section = document.createElement("section");
-        section.innerHTML = `<h2>${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>`;
-        
-        recipes[mealType].forEach(recipe => {
-            const recipeDiv = createRecipeCard(recipe);
-            section.appendChild(recipeDiv);
-        });
-
-        container.appendChild(section);
     });
 }
 
-function createRecipeCard(recipe) {
-    const recipeDiv = document.createElement("div");
-    recipeDiv.classList.add("recipe-card");
-    recipeDiv.innerHTML = `
-        <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
-        <h3>${recipe.name}</h3>
-        <p><strong>Ingredients:</strong></p>
-        <ul>${recipe.ingredients.map(ing => `<li>${ing.name}: ${ing.amount}</li>`).join('')}</ul>
-        <p><strong>Directions:</strong></p>
-        <ol>${recipe.directions.map(step => `<li>${step}</li>`).join('')}</ol>
-    `;
-    return recipeDiv;
+// Function to add fade-in animation effect (Moved from recipes.js)
+function applyFadeInEffect() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.recipe-card, .fade-in-element').forEach(card => observer.observe(card));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('App.js Loaded');
+
+    waitForNavToLoad();
+    enableSmoothScroll();
+    applyFadeInEffect(); // Now applies to all pages
+});
+
+// Function to wait for navigation to be fully loaded before highlighting active page
+function waitForNavToLoad(attempts = 10) {
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (navLinks.length > 0) {
+        highlightActivePage(); // Run once navigation is available
+    } else if (attempts > 0) {
+        console.warn('Navigation not loaded yet. Retrying...');
+        setTimeout(() => waitForNavToLoad(attempts - 1), 100);
+    } else {
+        console.error('Failed to load navigation.');
+    }
+}
+
+// Highlight the active navigation link
+function highlightActivePage() {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    console.log('Active page highlighted:', currentPage);
+}
+
+// Enable smooth scrolling for navigation links
+function enableSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    console.log('Smooth scrolling enabled.');
+}
+
+// Function to add fade-in animation effect (Moved from recipes.js)
+function applyFadeInEffect() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const elements = document.querySelectorAll('.recipe-card, .fade-in-element');
+    
+    if (elements.length > 0) {
+        elements.forEach(card => observer.observe(card));
+        console.log('Fade-in effect applied.');
+    } else {
+        console.warn('No fade-in elements found.');
+    }
 }

@@ -1,51 +1,30 @@
-// Fetch recipes from JSON
-export async function fetchRecipes() {
-    try {
-        console.log("Fetching recipes...");
-        const response = await fetch("/recipes.json"); 
-        
-        if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+// Import the recipes.json file as a module
+import recipesData from './recipes.json' assert { type: 'json' };
 
-        return await response.json();
-    } catch (error) {
-        console.error("Error fetching recipes:", error);
-        return null;
-    }
-}
-
-// Display recipes based on meal type
-export async function displayRecipes(mealType = 'all') {
+// Function to display breakfast recipes
+function displayRecipes(mealType = 'all') {
     const container = document.getElementById('recipes-container');
-    if (!container) return;
+    if (!container) return; // Ensure the container exists before modifying
 
-    container.innerHTML = '<p>Loading recipes...</p>'; 
+    container.innerHTML = ''; // Clear previous content
 
-    const recipesData = await fetchRecipes();
-    if (!recipesData) {
-        container.innerHTML = "<p>Unable to load recipes. Please try again later.</p>";
-        return;
-    }
-
-    container.innerHTML = ''; 
-
-    // Loop through the categories (e.g., breakfast, lunch, dinner)
-    Object.entries(recipesData).forEach(([category, recipes]) => {
-        // Filter recipes based on the meal type if necessary
-        if (mealType !== 'all' && category !== mealType) return;
+    // Iterate through the meal categories (e.g., 'breakfast', 'lunch', etc.)
+    Object.keys(recipesData).forEach(category => {
+        if (mealType !== 'all' && category !== mealType) return; // Filter by selected meal type
 
         const section = document.createElement('section');
         section.innerHTML = `<h2>${category.charAt(0).toUpperCase() + category.slice(1)}</h2>`;
 
-        // Loop through each recipe within a category
-        recipes.forEach(({ name, ingredients, directions }) => {
+        // Display each recipe in the selected category
+        recipesData[category].forEach(recipe => {
             const recipeDiv = document.createElement('div');
-            recipeDiv.classList.add('recipe-card', 'fade-in-element');
+            recipeDiv.classList.add('recipe-card');
             recipeDiv.innerHTML = `
-                <h3>${name}</h3>
+                <h3>${recipe.name}</h3>
                 <p><strong>Ingredients:</strong></p>
-                <ul>${ingredients.map(({ amount, name }) => `<li>${amount} ${name}</li>`).join('')}</ul>
+                <ul>${recipe.ingredients.map(ing => `<li>${ing.name}: ${ing.amount}</li>`).join('')}</ul>
                 <p><strong>Directions:</strong></p>
-                <ol>${directions.map(step => `<li>${step}</li>`).join('')}</ol>
+                <ol>${recipe.directions.map(step => `<li>${step}</li>`).join('')}</ol>
             `;
             section.appendChild(recipeDiv);
         });
@@ -53,11 +32,10 @@ export async function displayRecipes(mealType = 'all') {
         container.appendChild(section);
     });
 
-    // Apply fade-in effect after content is rendered
     applyFadeInEffect();
 }
 
-// Fade-in effect when the recipe elements come into view
+// Function to handle fade-in animation effect
 function applyFadeInEffect() {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -65,7 +43,12 @@ function applyFadeInEffect() {
                 entry.target.classList.add('fade-in');
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.5 });
 
-    document.querySelectorAll('.fade-in-element').forEach(card => observer.observe(card));
+    document.querySelectorAll('.recipe-card').forEach(card => observer.observe(card));
 }
+
+// Initialize the recipes when the page is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    displayRecipes('breakfast'); // Show only breakfast recipes for this page
+});
