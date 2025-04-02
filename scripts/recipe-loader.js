@@ -1,21 +1,40 @@
-// Import the recipes.json file as a module
-import recipesData from './recipes.json' assert { type: 'json' };
+// Function to determine the meal type based on the HTML filename
+function getMealType() {
+    const path = window.location.pathname;
+    if (path.includes("breakfast")) return "breakfast";
+    if (path.includes("lunch")) return "lunch";
+    if (path.includes("dinner")) return "dinner";
+    return "all"; // Default: Load everything if no specific page detected
+}
 
-// Function to display breakfast recipes
-function displayRecipes(mealType = 'all') {
+// Function to load and display recipes dynamically
+function loadRecipes() {
+    const mealType = getMealType(); // Get the meal type based on the filename
+
+    fetch('/recipes.json')  // Ensure the correct path
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to load recipes.json");
+            return response.json();
+        })
+        .then(recipesData => {
+            displayRecipes(recipesData, mealType);
+        })
+        .catch(error => console.error("Error loading recipes:", error));
+}
+
+// Function to display recipes
+function displayRecipes(recipesData, mealType) {
     const container = document.getElementById('recipes-container');
-    if (!container) return; // Ensure the container exists before modifying
+    if (!container) return;
 
     container.innerHTML = ''; // Clear previous content
 
-    // Iterate through the meal categories (e.g., 'breakfast', 'lunch', etc.)
     Object.keys(recipesData).forEach(category => {
-        if (mealType !== 'all' && category !== mealType) return; // Filter by selected meal type
+        if (mealType !== "all" && category !== mealType) return;
 
         const section = document.createElement('section');
         section.innerHTML = `<h2>${category.charAt(0).toUpperCase() + category.slice(1)}</h2>`;
 
-        // Display each recipe in the selected category
         recipesData[category].forEach(recipe => {
             const recipeDiv = document.createElement('div');
             recipeDiv.classList.add('recipe-card');
@@ -35,7 +54,7 @@ function displayRecipes(mealType = 'all') {
     applyFadeInEffect();
 }
 
-// Function to handle fade-in animation effect
+// Function to apply a fade-in effect when recipes load
 function applyFadeInEffect() {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -48,7 +67,5 @@ function applyFadeInEffect() {
     document.querySelectorAll('.recipe-card').forEach(card => observer.observe(card));
 }
 
-// Initialize the recipes when the page is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    displayRecipes('breakfast'); // Show only breakfast recipes for this page
-});
+// Initialize the script when the page is fully loaded
+document.addEventListener('DOMContentLoaded', loadRecipes);
