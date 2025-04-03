@@ -1,36 +1,23 @@
+// server.js
+// Express.js server for handling recipe requests
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-
 const app = express();
 const PORT = 3000;
+const dataFilePath = path.join(__dirname, "recipeRequests.json");
 
 app.use(express.json());
 app.use(express.static("public"));
 
-const dataFilePath = path.join(__dirname, "recipeRequests.json");
-
 app.post("/saveRecipeRequest", (req, res) => {
-    const newRequest = req.body;
-
     fs.readFile(dataFilePath, (err, data) => {
-        let recipeRequests = [];
-        if (!err && data.length > 0) {
-            recipeRequests = JSON.parse(data);
-        }
-
-        recipeRequests.push(newRequest);
-
-        fs.writeFile(dataFilePath, JSON.stringify(recipeRequests, null, 2), (writeErr) => {
-            if (writeErr) {
-                res.status(500).json({ message: "Error saving request." });
-            } else {
-                res.status(200).json({ message: "Request saved successfully!" });
-            }
+        const requests = !err && data.length ? JSON.parse(data) : [];
+        requests.push(req.body);
+        fs.writeFile(dataFilePath, JSON.stringify(requests, null, 2), writeErr => {
+            res.status(writeErr ? 500 : 200).json({ message: writeErr ? "Error saving request." : "Request saved successfully!" });
         });
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

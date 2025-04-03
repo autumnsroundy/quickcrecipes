@@ -1,34 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("recipeRequestForm");
-
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            recipe: document.getElementById("recipe").value,
-            details: document.getElementById("details").value,
-        };
-
+// request.js
+// Handles recipe request form submission
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("recipeRequestForm")?.addEventListener("submit", async e => {
+        e.preventDefault();
+        const formData = Object.fromEntries(new FormData(e.target));
         try {
-            const response = await fetch("/saveRecipeRequest", {
+            const res = await fetch("/saveRecipeRequest", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
             });
-
-            if (response.ok) {
-                alert("Recipe request submitted successfully!");
-                form.reset();
-            } else {
-                alert("Error submitting request. Please try again.");
-            }
+            alert(res.ok ? "Recipe request submitted successfully!" : "Error submitting request.");
+            if (res.ok) e.target.reset();
         } catch (error) {
             console.error("Error:", error);
             alert("An error occurred. Please try again later.");
         }
     });
 });
+
