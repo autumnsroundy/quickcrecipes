@@ -1,0 +1,87 @@
+@import 'home.css';
+@import 'recipes.css';
+@import 'global.css';
+@import 'header.css';
+@import 'footer.css';
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux&family=Roboto:wght@300;400;700&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-color: #1B2A3F;
+    --secondary-color: #A60F2B;
+    --background-color: #FFFFFF;
+    --accent-color: #B31023;
+    --accent2-color: #243954;
+    --text-color: #333;
+    --button-text: #fff;
+}
+
+/* Typography */
+h1, h2 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+/* About Page Styling */
+.about-page .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Center text */
+}
+
+.about-page h2 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.about-page p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Target only the h3 inside .about-container */
+.about-page .about-container h3 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Ensure only the list inside .about-container is affected */
+.about-page .about-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left; /* Left align the list */
+    max-width: 600px;
+}
+
+/* Style list items inside .about-container */
+.about-page .about-container ul li {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
