@@ -9,7 +9,7 @@ function getMealType() {
 
 // Fetch and load recipes from JSON
 function loadRecipes() {
-    fetch('/recipes.json')
+    fetch('./recipes.json')
         .then(response => {
             if (!response.ok) throw new Error("Failed to load recipes.json");
             return response.json();
