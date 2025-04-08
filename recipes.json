@@ -19,6 +19,7 @@
         ]
       },
       {
+        "image": "images/rasmoothie.jpg",
         "name": "Orange Raspberry Smoothie",
         "ingredients": [
           { "name": "Frozen raspberries", "amount": "1/2 cup" },
@@ -28,16 +29,7 @@
         "directions": ["Blend all ingredients until smooth.", "Enjoy!"]
       },
       {
-        "name": "Strawberry Protein Smoothie",
-        "ingredients": [
-          { "name": "Frozen strawberries", "amount": "1/2 cup" },
-          { "name": "Milk", "amount": "1/2 cup" },
-          { "name": "Honey", "amount": "1/2 tsp" },
-          { "name": "Peanut butter", "amount": "1/4 cup (optional)" }
-        ],
-        "directions": ["Blend all ingredients until smooth.", "Enjoy!"]
-      },
-      {
+        "image": "images/omelet.jpg",
         "name": "Spinach Jack Omelette",
         "ingredients": [
           { "name": "Large eggs", "amount": "2" },
@@ -58,6 +50,7 @@
     ],
     "lunch": [
       {
+        "image": "images/chxcwrap.jpg",
         "name": "Chicken Caesar Wrap",
         "ingredients": [
           { "name": "Rotisserie Chicken", "amount": "Shredded" },
@@ -73,6 +66,7 @@
         ]
       },
       {
+        "image": "images/grilledcheese.jpg",
         "name": "Grilled Cheese",
         "ingredients": [
           { "name": "Cheddar cheese", "amount": "Shredded" },
@@ -93,6 +87,7 @@
         ]
       },
       {
+        "image": "images/greek.jpg",
         "name": "Greek Salad",
         "ingredients": [
           { "name": "Fresh tomatoes", "amount": "1/2 cup, sliced" },
@@ -110,6 +105,7 @@
     ],
     "dinner": [
       {
+        "image": "images/cps.jpg",
         "name": "Chicken Pasta Salad",
         "ingredients": [
           { "name": "Penne pasta", "amount": "1 lb" },
@@ -127,6 +123,7 @@
         ]
       },
       {
+        "image": "images/italian.jpg",
         "name": "Italian Ham Sandwich",
         "ingredients": [
           { "name": "Focaccia bread", "amount": "4 pieces" },
@@ -142,6 +139,7 @@
         ]
       },
       {
+        "image": "images/texmex.jpg",
         "name": "TexMex Grain Bowl",
         "ingredients": [
           { "name": "Carrots", "amount": "2, peeled and chopped" },
