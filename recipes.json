@@ -1,6 +1,7 @@
 {
     "breakfast": [
       {
+        "image": "images/oatmeal.jpg",
         "name": "Oatmeal",
         "ingredients": [
           { "name": "Rolled oats", "amount": "1/2 cup" },
